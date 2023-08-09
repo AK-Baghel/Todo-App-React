@@ -1,0 +1,162 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body {
+    color: white;
+    /* display: flex;
+    height: 100vh;
+    justify-content: center; */
+    /* align-items: center; */
+    background-color: rgb(4, 47, 83);
+}
+
+.container1 {
+    margin: 20px 0px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border: 2px dotted rgb(255, 255, 255);
+    border-radius: 50px;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+}
+
+.container2 {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.box1 {
+    font-size: 50px;
+    font-style: bold;
+    color: Yellow;
+    user-select: none;    
+}
+
+.box2 {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+input {
+    width: 25vw;
+    height: 25px;
+    padding: 4px;
+    font-size: 20px;
+    outline: none;
+}
+
+.box3 {
+    display: flex;
+    justify-content: space-between;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+button {
+    font-size: 20px;
+    padding: 5px 15px;
+    border: none;
+    cursor: pointer;
+    background-color: rgb(109, 236, 109);
+    color: rgb(0, 0, 0);
+    transition: all 300ms ease-in;
+    font-style: bold;
+}
+button:hover{
+    background-color: rgb(186, 206, 4);
+}
+
+.box4 {
+    max-width: 45%;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0px;
+    background-color: rgb(241, 235, 173);
+    color: black;
+}
+
+.data {
+    display: flex;
+    padding: 10px;
+    min-width: 30vw;
+    overflow:hidden;
+}
+
+.box5 {
+    width: 10%;
+    padding: 5px 0px;
+    width: 100px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.delete {
+    background-color: red;
+    padding: 4px 8px;
+    cursor: pointer;
+    color: white;
+}
+
+.check {
+    width:30px;
+    cursor: pointer;
+}
+
+.box5 {
+    display: flex;
+    justify-content: center;
+    width: 48vw;
+}
+
+.add {
+    margin: 20px 0px;
+    text-align: center;
+    width: 6vw;
+    padding: 10px 5px;
+    cursor: pointer;
+    background-color: rgb(234, 0, 255);
+    color: rgb(255, 255, 255);
+}
+.total, .completed{
+    font-size: 25px;
+}
+
+span{
+    color: rgb(0, 0, 0);
+    background-color: #fff;
+    padding: 4px 10px;
+    
+}
+
+@media (max-width:375px){
+    .add {
+        text-align: center;
+        width: 30vw;        
+    }
+    input {
+        width: 70vw;
+    }
+    .box4 {
+        min-width: 90%;
+    }
+    .data {
+        display: flex;
+        padding: 10px;
+        min-width: 60%;
+        overflow:hidden;
+    }
+    .box5 {
+        padding-right: 10px;
+    }
+}
