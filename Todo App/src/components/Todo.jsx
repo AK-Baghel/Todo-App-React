@@ -3,6 +3,7 @@ import './Todo.css'
 
 export const Todo = () => {
 
+    //Before rendering, return the previous data in Array arr by getting data from localStorage.
     const getArr = () => {
         let list = localStorage.getItem('list');
         if (list) {
@@ -13,6 +14,7 @@ export const Todo = () => {
         }
     }
 
+    //taskNo() is counting the Total no. of Todo data checked in an Array arr.
     const taskNo = () => {
         const completedTasks = arr.filter((elem) => {
             return elem.check === true;
@@ -21,14 +23,19 @@ export const Todo = () => {
     }
 
 
+    //Using useState Hooks...
     const [input, setInput] = useState("");
-    const [completedTask, setCompletedTask] = useState(9);
+    const [completedTask, setCompletedTask] = useState(0);
     const [arr, setArr] = useState(getArr());
 
+
+    //Input field value onChange calling changeHandle()....
     const changeHandle = (e) => {
         setInput(e.target.value);
     }
 
+
+    //Addind an object in Array arr, which consits of name, id & check on click Add button. 
     const add = () => {
         if (input) {
             setArr([...arr, { name: input, id: new Date().getTime().toString(), check: false }]);
@@ -39,16 +46,23 @@ export const Todo = () => {
         }
     }
 
+
+    //Removing the unwanted Todo data from Array arr by using Filter()...
     const remove = (dataId) => {
         const items = arr.filter((elem) => {
             return elem.id !== dataId;
         })
+
         setArr(items);
+
+        // if todo data is checked and we remove that data it will decrement the value of total completed Tasks.
         if (completedTask > 0) {
             setCompletedTask(completedTask - 1);
         }
     }
 
+
+    //onChange of input type='checked' , it's toggle the pressed key element check data in it's object of Array arr. 
     const check = (dataId) => {
         const items = arr.map((elem) => {
             if (dataId !== elem.id) {
@@ -66,7 +80,8 @@ export const Todo = () => {
     }
 
     useEffect(() => {
-        localStorage.setItem("list", JSON.stringify(arr));
+        // saving todo list data in browser memory .
+        localStorage.setItem("list", JSON.stringify(arr));                
         taskNo();
     }, [arr])
 
@@ -81,7 +96,7 @@ export const Todo = () => {
 
                 <div className="box2">
                     <div className="total">Total no. of Tasks = <span>{arr.length}</span></div>
-                    
+
                     <div className="completed">Completed Tasks = <span>{completedTask}</span></div>
                 </div>
 
@@ -96,21 +111,19 @@ export const Todo = () => {
             </div>
 
             <div className="container2">
-
-            {
-                arr.map((elem) => {
-                    return (
-                        <div className="box4" key={elem.id}>
-                            <div className="data">{elem.name}</div>
-                            <div className="box5">
-                                <input className='check' checked={elem.check} type="checkBox" onChange={() => { check(elem.id) }} />
-                                <div className="delete" onClick={() => { remove(elem.id) }}>Delete</div>
+                {
+                    arr.map((elem) => {
+                        return (
+                            <div className="box4" key={elem.id}>
+                                <div className="data">{elem.name}</div>
+                                <div className="box5">
+                                    <input className='check' checked={elem.check} type="checkBox" onChange={() => { check(elem.id) }} />
+                                    <div className="delete" onClick={() => { remove(elem.id) }}>Delete</div>
+                                </div>
                             </div>
-                        </div>
-                    )
-                })
-            }
-
+                        )
+                    })
+                }
             </div>
 
         </>
